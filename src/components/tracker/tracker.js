@@ -12,20 +12,44 @@ class Tracker extends Component {
         }
     }
   handleChange=(event)=>{
-    console.log('in handleSubmit', event.target.value);
+      if (this.state.inputObj.longest<this.state.inputObj.recent) {
+        this.setState({
+            inputObj: {
+                recent: event.target.value,
+                longest: event.target.value
+            }
+          })
+      } else {
     this.setState({
         inputObj: {
             recent: event.target.value,
-        }
-      })
-  }
-  handleSubmit = () => {
-      this.setState({
-        finalObj: {
-            recent: this.state.inputObj.recent,
             longest: this.state.inputObj.longest
         }
       })
+    }
+  }
+  handleSubmit = () => {
+      console.log('input long val', this.state.inputObj.longest);
+      console.log('input recent val', this.state.inputObj.recent);
+      console.log('final long val', this.state.finalObj.longest);
+      console.log('final rec val', this.state.finalObj.recent);
+
+    
+      if (this.state.finalObj.recent > this.state.finalObj.longest) {
+          this.setState({
+            finalObj: {
+                recent: this.state.inputObj.recent,
+                longest: this.state.inputObj.recent
+            }  
+          })
+      } else {
+        this.setState({
+            finalObj: {
+                recent: this.state.inputObj.recent,
+                longest: this.state.inputObj.longest
+            }
+          })
+    }
   }
   render () {
   return (
