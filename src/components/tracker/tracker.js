@@ -12,7 +12,7 @@ class Tracker extends Component {
         }
     }
   handleChange=(event)=>{
-      if (this.state.inputObj.longest<this.state.inputObj.recent) {
+      if (Number(this.state.inputObj.longest)<Number(this.state.inputObj.recent)) {
         this.setState({
             inputObj: {
                 recent: event.target.value,
